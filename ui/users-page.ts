@@ -141,7 +141,7 @@ export function init(
 export const component: ClosureComponent = (): Component => {
   return {
     view: (vnode) => {
-      document.title = "Users - GenieACS";
+      document.title = "Users - ACSmaxnet+";
 
       function showMore(): void {
         vnode.state["showCount"] =

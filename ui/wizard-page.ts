@@ -12,7 +12,7 @@ export const component: ClosureComponent = (vnode): Component => {
 
   return {
     view: () => {
-      document.title = "Initialization wizard - GenieACS";
+      document.title = "Initialization wizard - ACSmaxnet+";
 
       const checkboxes = [
         "users",

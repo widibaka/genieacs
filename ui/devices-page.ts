@@ -223,7 +223,7 @@ function renderActions(selected: Set<string>): Children {
 export const component: ClosureComponent = (): Component => {
   return {
     view: (vnode) => {
-      document.title = "Devices - GenieACS";
+      document.title = "Devices - ACSmaxnet+";
       const attributes = vnode.attrs["indexParameters"];
 
       function showMore(): void {

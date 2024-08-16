@@ -131,7 +131,7 @@ export function init(
 export const component: ClosureComponent = (): Component => {
   return {
     view: (vnode) => {
-      document.title = "Virtual Parameters - GenieACS";
+      document.title = "Virtual Parameters - ACSmaxnet+";
 
       function showMore(): void {
         vnode.state["showCount"] =

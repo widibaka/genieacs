@@ -166,7 +166,7 @@ export function init(
 export const component: ClosureComponent = (): Component => {
   return {
     view: (vnode) => {
-      document.title = "Permissions - GenieACS";
+      document.title = "Permissions - ACSmaxnet+";
 
       function showMore(): void {
         vnode.state["showCount"] =

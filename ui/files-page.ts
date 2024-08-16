@@ -109,7 +109,7 @@ export function init(
 export const component: ClosureComponent = (): Component => {
   return {
     view: (vnode) => {
-      document.title = "Files - GenieACS";
+      document.title = "Files - ACSmaxnet+";
 
       function showMore(): void {
         vnode.state["showCount"] =

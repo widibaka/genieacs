@@ -199,20 +199,26 @@ async function copyStatic(): Promise<void> {
     "LICENSE",
     "README.md",
     "CHANGELOG.md",
-    "public/logo.svg",
+    // "public/logo.svg",
+    "public/logo_maxnet.png",
     "public/favicon.png",
   ];
 
   const [logo, favicon] = await Promise.all([
-    fsAsync.readFile(path.join(INPUT_DIR, "public/logo.svg")),
+    // fsAsync.readFile(path.join(INPUT_DIR, "public/logo.svg")),
+    fsAsync.readFile(path.join(INPUT_DIR, "public/logo_maxnet.png")),
     fsAsync.readFile(path.join(INPUT_DIR, "public/favicon.png")),
   ]);
 
-  ASSETS.LOGO_SVG = `logo-${assetHash(logo)}.svg`;
-  ASSETS.FAVICON_PNG = `favicon-${assetHash(favicon)}.png`;
+  // ASSETS.LOGO_SVG = `logo-${assetHash(logo)}.svg`;
+  ASSETS.LOGO_SVG = `logo_maxnet.png`;
+  // ASSETS.FAVICON_PNG = `favicon-${assetHash(favicon)}.png`;
+  ASSETS.FAVICON_PNG = `favicon.png`;
 
   const filenames = {} as Record<string, string>;
-  filenames["public/logo.svg"] = path.join("public", ASSETS.LOGO_SVG);
+  // filenames["public/logo.svg"] = path.join("public", ASSETS.LOGO_SVG);
+  // filenames["public/favicon.png"] = path.join("public", ASSETS.FAVICON_PNG);
+  filenames["public/logo_maxnet.png"] = path.join("public", ASSETS.LOGO_SVG);
   filenames["public/favicon.png"] = path.join("public", ASSETS.FAVICON_PNG);
 
   await Promise.all(
@@ -233,7 +239,8 @@ async function generateCss(): Promise<void> {
     sourcemap: "linked",
     sourcesContent: false,
     entryPoints: ["ui/css/app.css"],
-    entryNames: "[dir]/[name]-[hash]",
+    // entryNames: "[dir]/[name]-[hash]",
+    entryNames: "[dir]/[name]",
     outfile: path.join(OUTPUT_DIR, "public/app.css"),
     target: ["chrome109", "safari15.6", "firefox115", "opera102", "edge118"],
     metafile: true,
@@ -295,7 +302,8 @@ async function generateFrontendJs(): Promise<void> {
     format: "esm",
     target: ["chrome109", "safari15.6", "firefox115", "opera102", "edge118"],
     entryPoints: ["ui/app.ts"],
-    entryNames: "[dir]/[name]-[hash]",
+    // entryNames: "[dir]/[name]-[hash]",
+    entryNames: "[dir]/[name]",
     outdir: path.join(OUTPUT_DIR, "public"),
     plugins: [packageDotJsonPlugin, inlineDepsPlugin, assetsPlugin],
     metafile: true,
@@ -338,7 +346,8 @@ async function generateIconsSprite(): Promise<void> {
   const data = `<svg xmlns="http://www.w3.org/2000/svg">${symbols.join(
     "",
   )}</svg>`;
-  ASSETS.ICONS_SVG = `icons-${assetHash(data)}.svg`;
+  // ASSETS.ICONS_SVG = `icons-${assetHash(data)}.svg`;
+  ASSETS.ICONS_SVG = `icons.svg`;
   await fsAsync.writeFile(
     path.join(OUTPUT_DIR, "public", ASSETS.ICONS_SVG),
     data,
